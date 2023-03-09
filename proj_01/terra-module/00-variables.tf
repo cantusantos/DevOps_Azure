@@ -47,8 +47,7 @@ variable "server_vm_info" {
       storage_account_type    = string      
       create_option           = string
       caching                 = string
-      lun_number
-
+      lun_number              = number
     }))
   }))
   

@@ -14,7 +14,7 @@ server_vm_info = {
         location                  = "East US"        
         size                      = "Standard_B1s"
         nic_name                  = "nic-production"
-        # azure_subnet_id           ="/subscriptions/3258efe1-d8e7-4e11-aa41-7ece0bcd7d88/resourceGroups/rg-west-ETS_NETWORK/providers/Microsoft.Network/virtualNetworks/vnet-west-MMS-SharedServices/subnets/MMS-Development"
+        # azure_subnet_id           ="/subscriptions/f9ad750b-a951-4a98-b88e-051a2af00faf/resourceGroups/temp-RG/providers/Microsoft.Network/virtualNetworks/temp-vNet/subnets/temp-sNet"
         private_ip_address_allocation = "Static"
         static_ip                 = ""
 	    admin_username            = "luis10"
@@ -23,18 +23,10 @@ server_vm_info = {
         caching_type              = "ReadWrite"
         #storage_account_type      = "Standard_LRS"
         managed_disk_type         = "Standard_LRS"        
-        # source_image_id           = "/subscriptions/bf8f2b46-7581-485d-a21e-9ecfc670b79e/resourceGroups/rg-Core-SIG/providers/Microsoft.Compute/galleries/CoreSigProd/images/Windows-2019-CIS/versions/2021.09.15"
+        # source_image_id           = "/subscriptions/f9ad750b-a951-4a98-b88e-051a2af00faf/resourceGroups/rg-Core-SIG/providers/Microsoft.Compute/galleries/CoreSigProd/images/Windows-2019-CIS/versions/2021.09.15"
 	    enable_automatic_updates  = "false"
         patch_mode                = "Manual"        
         custom_data               = ""
 
-        # additional_disks = [{
-        #     name                    ="drivef"
-        #     disk_size_gb            = 100
-        #     storage_account_type    = "Premium_LRS"
-        #     create_option           = "Empty"
-        #     caching                 = "ReadWrite"
-        #     lun_number              = 10            
-        # }, ]
     }
 }
