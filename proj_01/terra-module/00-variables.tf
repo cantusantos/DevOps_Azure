@@ -1,4 +1,5 @@
 # Variables section
+# used for variable type declaration
 variable "rgname" {
   type    = string
   default = ""
@@ -49,6 +50,7 @@ variable "server_vm_info" {
       caching                 = string
       lun_number              = number
     }))
+    
   }))
   
   default = {}
