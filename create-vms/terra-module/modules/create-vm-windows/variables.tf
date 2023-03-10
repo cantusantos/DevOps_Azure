@@ -72,10 +72,6 @@ variable "resource_group_location" {
 variable "resource_group_name" {
   type=string
 }
- 
-variable "boot_diagnostic_account_name" {
-  type=string
-}
 
 variable "custom_data" {
   type=string
