@@ -34,7 +34,7 @@ resource "azurerm_windows_virtual_machine" "server_db" {
     caching                   = var.caching_type
     storage_account_type      = var.storage_account_type
     disk_size_gb              = var.disk_size_gb
-    create_option             = "FromImage"
+    #create_option             = "FromImage"
   }
   #source_image_id             = var.source_image_id
   
