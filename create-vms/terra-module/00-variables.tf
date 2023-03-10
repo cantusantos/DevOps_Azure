@@ -24,6 +24,17 @@ variable "subnet" {
     })
 }
 
+variable "storage_account_for_boot_diag" {
+  type=string
+}
+variable "storage_container_for_boot_diag" {
+  type=string
+}
+
+
+
+
+
 # variable "server_vm_info" {
 #   description = "Contain object of vm name and additional disks"
 #   type = map(object({    

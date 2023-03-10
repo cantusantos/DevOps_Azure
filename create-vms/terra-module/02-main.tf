@@ -18,3 +18,25 @@ resource "azurerm_subnet" "sNet" {
 }
 
 #--------------------------------------------------------------
+
+#01.first create the storage account for boot diagnostics
+resource "azurerm_storage_account" "dev_boot_diag" {
+  name                     = var.storage_account_for_boot_diag
+  resource_group_name      = resource.azurerm_resource_group.RG.name
+  location                 = resource.azurerm_resource_group.RG.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags={
+        environment="Terraform Storage"
+        CreatedBy= "Osvaldo Cantu"
+    }
+}
+
+resource "azurerm_storage_container" "lab" {
+  name                  = var.storage_container_for_boot_diag
+  storage_account_name  = resource.azurerm_storage_account.dev_boot_diag.name
+  container_access_type = "private"
+}
+
+
+

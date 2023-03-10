@@ -12,6 +12,12 @@ subnet    ={
     address_prefixes = ["10.0.3.0/24"]
 }
 
+storage_account_for_boot_diag   ="bootdiag0392023"
+storage_container_for_boot_diag ="bootblob"
+
+
+
+
 # server_vm_info = {
 #     "bywus-app-tst0" = {                                 #VM name  
 #         location                  = "East US"        
