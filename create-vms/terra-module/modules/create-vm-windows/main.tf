@@ -1,29 +1,3 @@
-#01.first create the storage account for boot diagnostics
-/*
-resource "azurerm_storage_account" "dev_boot_diag" {
-  name                     = "testluis09032021"
-  resource_group_name      = var.resource_group_name
-  location                 = var.resource_group_location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  tags={
-        environment="Terraform Storage"
-        CreatedBy= "Luis Mendez"
-    }
-}
-resource "azurerm_storage_container" "lab" {
-  name                  = "bootblob"
-  storage_account_name  = azurerm_storage_account.dev_boot_diag.name
-  container_access_type = "private"
-}
-*/
-#this is the one that we want
-#"https://testluis09032021.blob.core.windows.net"
-/*
-output "bloburl" {
-  value = azurerm_storage_account.lab.primary_blob_endpoint
-}
-*/
 
 #02.second we are going to create the network cards for the machines 
 resource "azurerm_network_interface" "server_dev_nic" {
@@ -60,8 +34,16 @@ resource "azurerm_windows_virtual_machine" "server_db" {
     caching                   = var.caching_type
     storage_account_type      = var.storage_account_type
     disk_size_gb              = var.disk_size_gb
+    create_option             = "FromImage"
   }
-  source_image_id             = var.source_image_id
+  #source_image_id             = var.source_image_id
+  
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2016-Datacenter"
+    version   = "latest"
+  }
   
   enable_automatic_updates    = var.enable_automatic_updates 
   patch_mode                  = var.patch_mode 

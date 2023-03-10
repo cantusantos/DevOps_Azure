@@ -38,5 +38,36 @@ resource "azurerm_storage_container" "lab" {
   container_access_type = "private"
 }
 
+#--------------------------------------------------------------------------
+
+module "vm_dev_test_uswest" {
+  source                    = "./modules/create-vm-windows"  
+  
+  for_each                  = var.server_vm_info
+  
+  server_name               = each.key                                #this is the server name
+  location                  = each.value.location
+  nic_name                  = "prod-${lower(each.key)}"
+  size                      = each.value.size
+  azure_subnet_id           = each.value.azure_subnet_id
+  private_ip_address_allocation = each.value.private_ip_address_allocation  
+  static_ip                 = each.value.static_ip
+  admin_username            = each.value.admin_username
+  admin_password            = each.value.admin_password  
+  caching_type              = each.value.caching_type
+  additional_disks          = each.value.additional_disks
+  storage_account_type      = each.value.storage_account_type
+  disk_size_gb              = each.value.disk_size_gb
+  enable_automatic_updates  = each.value.enable_automatic_updates
+  patch_mode                = each.value.patch_mode  
+  custom_data               = each.value.custom_data 
+  resource_tags             = var.resource_tags
+  resource_group_location   = resource.azurerm_resource_group.RG.location
+  resource_group_name       = resource.azurerm_resource_group.RG.name  
+  primary_blob_endpoint     = azurerm_storage_account.dev_boot_diag.primary_blob_endpoint
+
+  depends_on = [azurerm_storage_account.dev_boot_diag]
+
+}
 
 
