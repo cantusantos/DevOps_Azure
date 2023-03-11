@@ -15,6 +15,7 @@ You will set the following environment and Terraform variables:
 
 * repository_name - the name of the repository to add the secrets to
 * GITHUB_TOKEN - the GitHub PAT to access the repo and add the secrets
+  export GITHUB_TOKEN=<token>
 
 For the Azure components, you should log into Azure and select a subscription:
 

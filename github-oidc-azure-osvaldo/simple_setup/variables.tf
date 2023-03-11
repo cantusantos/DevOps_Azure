@@ -7,11 +7,9 @@ variable "repository_name" {
 variable "azure_region" {
   type        = string
   description = "(Optional) Azure region to use for storage account. Defaults to East US."
-  default     = "eastus"
-}
+  }
 
 variable "ref_branch" {
   type        = string
   description = "(Optional) The branch to use for the reference. Defaults to main."
-  default     = "main"
 }
